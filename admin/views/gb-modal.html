@@ -1,0 +1,134 @@
+<div id="gb-modal" style="display:none;" data-bind="fadeVisible: isVisible">
+	
+	<div class="gb-modal-overlay" data-bind="click: hide"></div>
+	
+	<div class="centeringWrap verticalCentering">
+		<div class="gb-modal-content centeredWrap">
+		
+			<div class="gb-modal-title">
+				<div class="gb-icon"></div>
+				<div class="gb-modal-close" data-bind="click: hide"><i class="fa fa-times"></i></div>
+			</div><!--/.gb-modal-title-->
+		
+			<div class="gb-modal-body">
+			
+				<div class="gb-modal-button-preview" data-bind="visible: (userHasSelectedStyle() || selectingStyle()) && !addingIcon()">
+					<span data-bind="visible: previewingButtonStyle() == ''">SELECT A STYLE...</span>
+					<span class="gb-button " data-bind="style: { backgroundColor: settings.color }, attr: { 'class': 'gb-button gb-size-' + settings.size() + ' gb-corners-' + settings.corners() + ' gb-text-style-' + settings.text_style() + ' gb-style-' + (previewingButtonStyle() ? previewingButtonStyle() : '')}, visible: previewingButtonStyle() != '', html: buttonTextAsHtml"></span>
+				</div>
+				
+				<div class="gb-modal-search-box" data-bind="visible: addingIcon()">
+					<input id="gb-icon-search-input" type="text" placeholder="search..." data-bind="value: faSearchText, valueUpdate: 'keyup'"/>
+				</div>
+			
+				<div class="gb-modal-options" data-bind="visible: !selectingStyle() && !addingIcon()">
+					<div class="gb-modal-option">
+						<div class="gb-option-icon"><i class="fa fa-tint"></i></div>
+						<div class="gb-option-field">
+							<p class="actionable" data-bind="click: function(){ selectingStyle(true); }">
+								<span data-bind="visible: settings.style() == ''">Select a style...</span>
+								<span data-bind="visible: settings.style() != '', attr: { 'class': 'gb-button gb-size-micro gb-' + (settings.style() ? settings.style() : '') }, text: (settings.style() ? settings.style().toUpperCase() : '')"></span>
+								<i class="gb-right-input-icon fa fa-chevron-right"></i>
+							</p>
+						</div>
+					</div>
+				
+					<div class="gb-modal-option" data-bind="slowFadeVisible: userHasSelectedStyle()">
+						<div class="gb-option-colors">
+							<div class="gb-option-icon">&nbsp;</div>
+							<div class="gb-option-color tooltip" data-bind="style: { backgroundColor: settings.color() }" title="Color...">
+								<input id="gb-primary-color-input" class="gb-color-picker-input" data-bind="value: settings.color" />
+							</div>
+							<!--<div class="gb-option-color" data-bind="style: { backgroundColor: settings.secondaryColor() }">
+								<input id="gb-secondary-color-input" class="gb-color-picker-input" data-bind="value: settings.secondaryColor" />
+							</div>-->
+							<!--<div class="gb-option-color" data-bind="style: { backgroundColor: settings.borderColor() }">
+								<input id="gb-border-color-input" class="gb-color-picker-input" data-bind="value: settings.borderColor" />
+							</div>-->
+							<!--<div class="gb-option-color" data-bind="style: { backgroundColor: settings.textColor() }">
+								<input id="gb-text-color-input" class="gb-color-picker-input" data-bind="value: settings.textColor" />
+							</div>-->
+						</div>
+						<div class="gb-option-more tooltip" title="More Options" data-bind="visible: !viewingMoreOptions(), click: function(){ viewingMoreOptions(true); }">...</div>
+						<ul class="gb-option-toggle tooltip" data-bind="visible: viewingMoreOptions()" title="Size">
+							<li data-bind="css: { selected: settings.size() == 'tiny' }, click: function(){ settings.size('tiny'); }"><div class="gb-toggle-square sm gb-toggle-rounded"></div></li>
+							<li data-bind="css: { selected: settings.size() == 'small' }, click: function(){ settings.size('small'); }"><div class="gb-toggle-square gb-toggle-rounded"></div></li>
+							<li data-bind="css: { selected: settings.size() == 'default' }, click: function(){ settings.size('default'); }"><div class="gb-toggle-square lg gb-toggle-rounded"></div></li>
+							<li data-bind="css: { selected: settings.size() == 'large' }, click: function(){ settings.size('large'); }"><div class="gb-toggle-square xl gb-toggle-rounded"></div></li>
+						</ul>
+						<ul class="gb-option-toggle tooltip" data-bind="visible: viewingMoreOptions()" title="Corners">
+							<li data-bind="css: { selected: settings.corners() == 'straight' }, click: function(){ settings.corners('straight'); }"><div class="gb-toggle-square"></div></li>
+							<li data-bind="css: { selected: settings.corners() == 'default' }, click: function(){ settings.corners('default'); }"><div class="gb-toggle-square gb-toggle-rounded"></div></li>
+							<li data-bind="css: { selected: settings.corners() == 'pill' }, click: function(){ settings.corners('pill'); }"><div class="gb-toggle-square gb-toggle-pill"></div></li>
+						</ul>
+						<ul class="gb-option-toggle tooltip" data-bind="visible: viewingMoreOptions()" title="Text Style">
+							<li data-bind="css: { selected: settings.text_style() == 'heavy' }, click: function(){ settings.text_style('heavy'); }"><div class="gb-toggle-letter thick">A</div></li>
+							<li data-bind="css: { selected: settings.text_style() == 'default' }, click: function(){ settings.text_style('default'); }"><div class="gb-toggle-letter">A</div></li>
+							<li data-bind="css: { selected: settings.text_style() == 'light' }, click: function(){ settings.text_style('light'); }"><div class="gb-toggle-letter thin">A</div></li>
+						</ul>
+					</div>
+				
+					<div class="gb-modal-option">
+						<div class="gb-option-icon"><i class="fa fa-font"></i></div>
+						<div class="gb-option-field">
+							<input type="text" placeholder="Button Text" data-bind="value: settings.text, valueUpdate: 'keyup'" />
+							<i class="gb-right-input-icon fa fa-plus-square-o tooltip" title="Add Icon" data-bind="click: function(){ addingIcon(true); }"></i>
+						</div>
+					</div>
+				
+					<div class="gb-modal-option">
+						<div class="gb-option-icon"><i class="fa fa-link"></i></div>
+						<div class="gb-option-field">
+							<input type="text" placeholder="Button Link" data-bind="value: settings.link, valueUpdate: 'keyup'" />
+							<i class="gb-right-input-icon fa fa-share-square-o tooltip toggle" title="Opens in new tab?" data-bind="css: { selected: settings.new_tab() }, click: function(){ settings.new_tab(!settings.new_tab()); }"></i>
+							<!--<div class="gb-button-toggle"><i class="fa fa-square-o selected"></i> <span>/</span> <i class="fa fa-share-square-o tooltip"></i></div>-->
+						</div>
+					</div>
+				
+				</div>
+			
+				<div class="gb-modal-styles-selector" data-bind="visible: selectingStyle(), event: { 'mousewheel': function(){ if(!userHasScrolled()){ userHasScrolled(true); } return true; } }">
+				    <!--<ul data-bind="foreach: ['flat', 'traditional', 'bordered', 'raised', 'metro', 'outline', 'cloud', 'app', 'subtle', 'glass', 'ocean', 'gravity']">-->
+						<ul data-bind="foreach: ['flat', 'raised', 'bordered', 'glass', 'reversed', 'traditional']">
+							<li data-bind="click: $root.selectStyle, event: { mouseover: $root.setPreviewStyle, mouseout: $root.clearStylePreview }">
+								<span class="tiny" data-bind="attr: { 'class': 'gb-button gb-size-tiny gb-style-' + $data}, text: $data[0].toUpperCase() + $data.slice(1)"></span>
+							</li>
+				    </ul>
+				</div>
+				
+				<div class="gb-modal-icon-selector" data-bind="visible: addingIcon(), event: { 'mousewheel': function(){ if(!userHasScrolled()){ userHasScrolled(true); } return true; } }">
+					<ul data-bind="foreach: filteredIcons">
+						<li data-bind="click: $root.addIcon"><i class="fa" data-bind="attr: { 'class': 'fa fa-fw fa-' + $data }"></i><!--<span data-bind="text: $data"></span>--></li>
+					</ul>
+				</div>
+			
+			</div><!--/.gb-modal-body-->
+		
+			<div class="gb-modal-actions" data-bind="visible: selectingStyle()">
+				<div class="cancel-action" data-bind="click: function(){ selectingStyle(false); }"><i class="fa fa-angle-left"></i> &nbsp;Back</div>
+				
+				<!--For pro-->
+				<!--<div class="info-text" data-bind="slowFadeVisible: !userHasScrolled()">Scroll down for more styles &nbsp;<i class="fa fa-long-arrow-down"></i></div>-->
+				
+				<!--For free-->
+				<!--<a href="http://gravitybuttons.com/pricing" target="_blank"><div class="info-text">Get more styles &nbsp;<i class="fa fa-long-arrow-right"></i></div></a>-->
+			</div>
+			
+			<div class="gb-modal-actions" data-bind="visible: addingIcon()">
+				<div class="cancel-action" data-bind="click: function(){ addingIcon(false); }"><i class="fa fa-angle-left"></i> &nbsp;Back</div>
+				
+				
+				<!--<button class="purple small" data-bind="click: addIcon"><i class="fa fa-plus"></i> ADD</button>-->
+				
+				<!--For free-->
+				<!--<a href="http://gravitybuttons.com/pricing" target="_blank"><div class="info-text">Get more icons &nbsp;<i class="fa fa-long-arrow-right"></i></div></a>-->
+			</div>
+			
+			<div class="gb-modal-actions" data-bind="visible: !selectingStyle() && !addingIcon()">
+				<button class="purple small" data-bind="visible: !isUpdatingExistingButton(), click: insertButton, enable: settingsAreValid(), css: {disabled: !settingsAreValid() }">INSERT</button>
+				<button class="purple small" data-bind="visible: isUpdatingExistingButton(), click: insertButton, enable: settingsAreValid(), css: {disabled: !settingsAreValid() }">UPDATE</button>
+			</div><!--/.gb-modal-actions-->
+		</div><!--/.gb-modal-content-->
+	</div>
+	
+</div>
