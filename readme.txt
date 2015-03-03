@@ -20,12 +20,12 @@ Gravity Buttons are completely responsive and designed to look great on mobile, 
 
 Gravity Buttons features that enable you to create buttons and convert visitors as easily and efficiently as possible:
 
-* One-Minute Install: Install and create your first bar in under 60 seconds
+* One-Minute Install: Install and create your first button in under 60 seconds
 * Beautiful Button Presets: Choose from professionally designed button presets, or create your own!
 * Visual Editor: Design your own buttons with an easy-to-use visual editor
 * In-Line Editing: Update button text in-line without having to open any menus
 * Awesome Icon Selection: Add over 500 distinctive icons to your calls to action
-* Mobile Friendly: Responsive from the ground up so your bars look great on your phone and browser
+* Mobile Friendly: Responsive from the ground up so your buttons look great on your phone and browser
 * Alignment Support: Left Align, Center, or Right Align your buttons with one click
 
 
@@ -38,6 +38,7 @@ This section describes how to install the plugin and create your first button.
 3. Create a new Post or Page (or edit an existing one) and click the Gravity Button button in the post editor (it will be a purple button next to all the others)
 4. Select your button style, text, and specify where users should go when they click your button
 5. Click "Insert" to insert the button into your post. Self-Five for creating a beautiful button in seconds.
+6. Edit any existing button by double clicking it, or editing the text in-line
 
 
 == Frequently Asked Questions ==
