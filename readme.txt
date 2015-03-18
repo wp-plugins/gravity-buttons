@@ -4,7 +4,7 @@ Tags: button generator, button creator, button maker, css button, css3 button, c
 Requires at least: 3.9
 Donate Link: https://gravitybuttons.com/pricing
 Tested up to: 4.1.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2
 
 Gravity Buttons is a button creator for WordPress that allows anyone to create beautiful buttons anywhere on their site.
@@ -75,6 +75,9 @@ Aside from both plugins having kickass names, nah no relation.
 9. Fine-Tune button colors to either match your brand or stand in on your pages & posts
 
 == Changelog ==
+
+= 1.0.2 | Mar 18, 2015 =
+* Fix: Fixed font loading issue on https connections
 
 = 1.0.1 | Mar 18, 2015 =
 * Feature: Added intro videos to settings page
