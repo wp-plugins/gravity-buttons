@@ -2,8 +2,8 @@
 	
 	<div class="gb-modal-overlay" data-bind="click: hide"></div>
 	
-	<div class="centeringWrap verticalCentering">
-		<div class="gb-modal-content centeredWrap">
+	<div class="centeringWrap verticalCentering" data-bind="click: hide">
+		<div class="gb-modal-content centeredWrap" data-bind="click: function(data, e){ e.stopImmediatePropagation(); }">
 		
 			<div class="gb-modal-title">
 				<div class="gb-icon"></div>
@@ -12,7 +12,7 @@
 		
 			<div class="gb-modal-body">
 			
-				<div class="gb-modal-button-preview" data-bind="visible: (userHasSelectedStyle() || selectingStyle()) && !addingIcon()">
+				<div class="gb-modal-button-preview" data-bind="visible: (userHasSelectedStyle() || selectingStyle()) && !addingIcon() && !gettingMoreStyles()">
 					<span data-bind="visible: previewingButtonStyle() == ''">SELECT A STYLE...</span>
 					<span class="gb-button " data-bind="style: { backgroundColor: settings.color }, attr: { 'class': 'gb-button gb-size-' + settings.size() + ' gb-corners-' + settings.corners() + ' gb-text-style-' + settings.text_style() + ' gb-style-' + (previewingButtonStyle() ? previewingButtonStyle() : '')}, visible: previewingButtonStyle() != '', html: buttonTextAsHtml"></span>
 				</div>
@@ -25,7 +25,7 @@
 					<div class="gb-modal-option">
 						<div class="gb-option-icon"><i class="fa fa-tint"></i></div>
 						<div class="gb-option-field">
-							<p class="actionable" data-bind="click: function(){ selectingStyle(true); }">
+							<p class="actionable" data-bind="click: showStyleSelection">
 								<span data-bind="visible: settings.style() == ''">Select a style...</span>
 								<span data-bind="visible: settings.style() != '', attr: { 'class': 'gb-button gb-size-micro gb-' + (settings.style() ? settings.style() : '') }, text: (settings.style() ? settings.style().toUpperCase() : '')"></span>
 								<i class="gb-right-input-icon fa fa-chevron-right"></i>
@@ -87,7 +87,7 @@
 				
 				</div>
 			
-				<div class="gb-modal-styles-selector" data-bind="visible: selectingStyle(), event: { 'mousewheel': function(){ if(!userHasScrolled()){ userHasScrolled(true); } return true; } }">
+				<div class="gb-modal-styles-selector" data-bind="visible: selectingStyle() && !gettingMoreStyles(), event: { 'mousewheel': function(){ if(!userHasScrolled()){ userHasScrolled(true); } return true; } }">
 				    <!--<ul data-bind="foreach: ['flat', 'traditional', 'bordered', 'raised', 'metro', 'outline', 'cloud', 'app', 'subtle', 'glass', 'ocean', 'gravity']">-->
 						<ul data-bind="foreach: ['flat', 'raised', 'bordered', 'glass', 'reversed', 'traditional']">
 							<li data-bind="click: $root.selectStyle, event: { mouseover: $root.setPreviewStyle, mouseout: $root.clearStylePreview }">
@@ -101,17 +101,23 @@
 						<li data-bind="click: $root.addIcon"><i class="fa" data-bind="attr: { 'class': 'fa fa-fw fa-' + $data }"></i><!--<span data-bind="text: $data"></span>--></li>
 					</ul>
 				</div>
+				
+				<div class="gb-modal-ad" data-bind="click: purchasePro, visible: selectingStyle() && gettingMoreStyles()"></div>
 			
 			</div><!--/.gb-modal-body-->
 		
-			<div class="gb-modal-actions" data-bind="visible: selectingStyle()">
+			<div class="gb-modal-actions" data-bind="visible: selectingStyle() && !gettingMoreStyles()">
 				<div class="cancel-action" data-bind="click: function(){ selectingStyle(false); }"><i class="fa fa-angle-left"></i> &nbsp;Back</div>
 				
 				<!--For pro-->
 				<!--<div class="info-text" data-bind="slowFadeVisible: !userHasScrolled()">Scroll down for more styles &nbsp;<i class="fa fa-long-arrow-down"></i></div>-->
 				
 				<!--For free-->
-				<!--<a href="http://gravitybuttons.com/pricing" target="_blank"><div class="info-text">Get more styles &nbsp;<i class="fa fa-long-arrow-right"></i></div></a>-->
+				<div class="cancel-action" style="float:right;margin-right:0;" data-bind="click: function(){ gettingMoreStyles(true); }"><i class="fa fa-gift"></i> &nbsp;Get more styles</div>
+			</div>
+			
+			<div class="gb-modal-actions" data-bind="visible: selectingStyle() && gettingMoreStyles()">
+				<div class="cancel-action" data-bind="click: function(){ gettingMoreStyles(false); }"><i class="fa fa-angle-left"></i> &nbsp;Maybe Later</div>
 			</div>
 			
 			<div class="gb-modal-actions" data-bind="visible: addingIcon()">
@@ -121,7 +127,7 @@
 				<!--<button class="purple small" data-bind="click: addIcon"><i class="fa fa-plus"></i> ADD</button>-->
 				
 				<!--For free-->
-				<!--<a href="http://gravitybuttons.com/pricing" target="_blank"><div class="info-text">Get more icons &nbsp;<i class="fa fa-long-arrow-right"></i></div></a>-->
+				<!--<a href="https://gravitybuttons.com/pricing" target="_blank"><div class="info-text">Get more icons &nbsp;<i class="fa fa-long-arrow-right"></i></div></a>-->
 			</div>
 			
 			<div class="gb-modal-actions" data-bind="visible: !selectingStyle() && !addingIcon()">

@@ -194,8 +194,8 @@
             return {
                 longname : 'Gravity Buttons Plugin',
                 author : 'Phil Baylog',
-                authorurl : 'http://gravitybuttons.com',
-                infourl : 'http://gravitybuttons.com',
+                authorurl : 'https://gravitybuttons.com',
+                infourl : 'https://gravitybuttons.com',
                 version : "0.1"
             };
         }

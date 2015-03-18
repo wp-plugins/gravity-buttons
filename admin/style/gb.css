@@ -940,11 +940,18 @@
 }
 #gb-modal .gb-modal-body .gb-modal-options,
 #gb-modal .gb-modal-body .gb-modal-styles-selector,
-#gb-modal .gb-modal-body .gb-modal-icon-selector {
+#gb-modal .gb-modal-body .gb-modal-icon-selector,
+#gb-modal .gb-modal-body .gb-modal-ad {
   position: relative;
   width: 360px;
   left: 50%;
   margin-left: -180px;
+}
+#gb-modal .gb-modal-body .gb-modal-ad {
+  cursor: pointer;
+  width: 360px;
+  height: 250px;
+  background-image: url('../images/ads/modal-ad.png');
 }
 #gb-modal .gb-modal-body .gb-modal-options {
   position: relative;
@@ -1311,6 +1318,24 @@
   float: right;
   margin: 50px 5%;
 }
+#gb-settings #intro-videos {
+  position: relative;
+  float: left;
+  clear: both;
+  width: 100%;
+  margin: 0;
+}
+#gb-settings #intro-videos li {
+  list-style: none;
+  position: relative;
+  float: left;
+  clear: none;
+  width: 25%;
+  margin-top: 15px;
+}
+#gb-settings #intro-videos li h6 {
+  margin: 10px 0;
+}
 #gb-setup .gb-form-container {
   width: 650px;
   margin: 20px 0 20px 5%;
@@ -1439,4 +1464,26 @@
 }
 .gb-page .gb-sidebar-content button {
   margin: 10px 0 0 0;
+}
+.gb-page .gb-sidebar-content .gb-sidebar-ad {
+  position: relative;
+  float: left;
+  clear: both;
+  margin-top: 100px;
+  width: 175px;
+  height: 225px;
+  -webkit-transition: all linear 0.2s;
+  -moz-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+.gb-page .gb-sidebar-content .gb-sidebar-ad:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 1px 3px 7px 3px rgba(42, 39, 76, 0.25);
+  -moz-box-shadow: 1px 3px 7px 3px rgba(42, 39, 76, 0.25);
+  box-shadow: 1px 3px 7px 3px rgba(42, 39, 76, 0.25);
+  /* For IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='" rgba(42, 39, 76, 0.25) "')";
+}
+.gb-page .gb-sidebar-content .gb-sidebar-ad.ad1 {
+  background-image: url('../images/ads/3.png');
 }

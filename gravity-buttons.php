@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Gravity Buttons
-Plugin URI: http://gravitybuttons.com
+Plugin URI: https://gravitybuttons.com
 Description: Gravity Buttons is a button creator for WordPress that allows anyone to create beautiful buttons anywhere on their site.
-Version: 1.0.0
+Version: 1.0.1
 Author: Phil Baylog
-Author URI: http://gravitybuttons.com
+Author URI: https://gravitybuttons.com
 License: GPLv2
 */
 
@@ -16,7 +16,7 @@ define( 'GB_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'GB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 global $GB_VERSION;
-$GB_VERSION = '1.0.0';
+$GB_VERSION = '1.0.1';
 
 class GravityButtons{
 
@@ -26,6 +26,9 @@ class GravityButtons{
 
 		$this->include_before_plugin_loaded();
 		add_action('plugins_loaded', array($this, 'include_after_plugin_loaded'));
+		
+		add_action('plugin_action_links_' . plugin_basename(__FILE__), array($this, 'add_upgrade_link_to_plugins_page'));
+ 		add_action('plugin_action_links_' . plugin_basename(__FILE__), array($this, 'add_settings_link_to_plugins_page'));
 	}
 
 	/** Singleton Instance Implementation **********/
@@ -41,6 +44,20 @@ class GravityButtons{
 	//called before the 'plugins_loaded action is fired
 	function include_before_plugin_loaded(){
 		global $wpdb;
+	}
+	
+	function add_upgrade_link_to_plugins_page($links){
+		$upgrade_link = '<a href="https://gravitybuttons.com/pricing" target="_blank">Upgrade to PRO</a>'; 
+	  array_unshift($links, $upgrade_link);
+	
+	  return $links;
+	}
+	
+	function add_settings_link_to_plugins_page($links){
+		$settings_link = '<a href="options-general.php?page=gb-admin">Settings</a>'; 
+	  array_unshift($links, $settings_link);
+	
+	  return $links;
 	}
 	
 	function add_gb_tiny_mce_button($buttons){
@@ -76,7 +93,6 @@ class GravityButtons{
 		//update database or options if plugin version updated
 		if(get_option('GB_VERSION') != $GB_VERSION){
 			gb()->initializeGBOptions();
-			gb()->initializeGBDB();
 			
 			update_option('GB_VERSION', $GB_VERSION);
 		}
@@ -127,24 +143,6 @@ class GravityButtons{
 			update_option('gb_subscribed', false);
 		}
 		
-	}
-	
-	static function initializeGBDB(){
-		
-		return;
-		
-		global $wpdb;
-		
-		$charset_collate = $wpdb->get_charset_collate();
-
-		//No sql here
-		$sql = '';
-
-		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-
-		dbDelta($sql);
-		
-		add_option('gb_db_version', '1.0.0');
 	}
 	
 	static function destroyGBOptions(){
