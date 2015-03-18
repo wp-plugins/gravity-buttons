@@ -143,5 +143,23 @@
 		button{
 			margin:10px 0 0 0;
 		}
+		
+		.gb-sidebar-ad{
+			position:relative;float:left;clear:both;margin-top:100px;
+			
+			width:175px;
+			height:225px;
+			
+			.transition();
+			
+			&:hover{
+				cursor:pointer;
+				.drop-shadow(1px, 3px, 7px, 3px, fade(@dark, 25%));
+			}
+			
+			&.ad1{
+				background-image:url('../images/ads/3.png');
+			}
+		}
 	}
 }

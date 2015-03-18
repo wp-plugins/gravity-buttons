@@ -14,11 +14,14 @@ jQuery(document).ready(function($){
 		self.saveFunction = save_function;
 		self.isVisible = ko.observable(false);
 		self.isUpdatingExistingButton = ko.observable(false);
+		self.isHidingColorPicker = ko.observable(false);
 		
 		self.selectingStyle = ko.observable(false);
 		self.addingIcon = ko.observable(false);
 		self.userHasScrolled = ko.observable(false);
 		self.viewingMoreOptions = ko.observable(false);
+		
+		self.gettingMoreStyles = ko.observable(false);
 		
 		self.faSearchText = ko.observable('');
 		
@@ -65,7 +68,7 @@ jQuery(document).ready(function($){
 					self.settings.link('http://' + self.settings.link());
 				}
 			}
-		})
+		});
 		
 		self.buttonTextAsHtml = ko.computed(function(){
 			if(!self.settings.text() || self.settings.text() == ''){
@@ -92,6 +95,13 @@ jQuery(document).ready(function($){
 				return self.settings.style();
 			}
 		});
+		self.showStyleSelection = function(){
+			if(self.isHidingColorPicker()){
+				return;
+			}
+			
+			self.selectingStyle(true);
+		}
 		self.setPreviewStyle = function(style){
 			self.previewStyle(style);
 		}
@@ -107,7 +117,7 @@ jQuery(document).ready(function($){
 		self.addIcon = function(iconName){
 			
 			//insert at beginning unless iconName contains the word arrow (presumably for right arow)
-			if(iconName.indexOf('arrow') > -1){
+			if(iconName.indexOf('right') > -1){
 				
 				//insert space before icon if didn't exist prior
 				if(self.settings.text().replace(/\s*$/,'').length == self.settings.text().length){
@@ -195,6 +205,15 @@ jQuery(document).ready(function($){
 					if(!bySetColor){
 						$(el).val('#' + hex.toUpperCase()).change();//need to fire .change() for knockout to register changes
 					}
+				},
+				onHide: function(){
+					
+					/*Freeze UI for 100 ms while colpicker is hidden - preventing the dismiss from causing other actions*/
+					self.isHidingColorPicker(true);
+					setTimeout(function(){
+						self.isHidingColorPicker(false);
+					}, 100);
+					
 				}
 			}
 			
@@ -205,9 +224,21 @@ jQuery(document).ready(function($){
 			
 		}
 		
+		self.purchasePro = function(){
+			window.open('https://gravitybuttons.com/pricing', '_blank');
+		}
+		
 		self.hide = function(){
 			
+			if(self.isHidingColorPicker()){
+				return;
+			}
+			
 			self.isVisible(false);
+			
+			self.selectingStyle(false);
+			self.gettingMoreStyles(false);
+			self.addingIcon(false);
 		}
 		
 		self.insertButton = function(){

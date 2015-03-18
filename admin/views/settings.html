@@ -14,8 +14,8 @@
 				<i class="fa fa-spin fa-spinner" style="font-size:100px;text-align:center;width:100%;padding:100px 0;color:#DDD;"></i>
 			</div>
 			
-			<h4>Well this is embarrassing...this plugin doesn't have any settings yet!</h4>
-			<p>Have any ideas for things you would like to be able to customize? <a href="http://gravitybuttons.com/support" target="_blank">Let me know here!</a></p>
+			<!--<h4>Well this is embarrassing...this plugin doesn't have any settings yet!</h4>-->
+			<p>Have any ideas for things you would like to be able to customize? <a href="https://gravitybuttons.com/support" target="_blank">Let me know here!</a></p>
 			
 			<div style="display:none;" class="gb-options-list" data-bind="visible: !syncingDataWithServer(), with: settings">
 				
@@ -32,10 +32,26 @@
 				
 			</div><!--/.gb-options-list-->
 			
-			<button style="display:none;" id="save-settings-button" class="purple extra-padding" data-bind="visible: !syncingDataWithServer(), click: saveSettings, enable: settings.dirty(), css: { disabled: !settings.dirty() || savingSettings() }">
+			<h4 style="clear:both;position:relative;float:left;margin:50px 0 0 0;">Quick How-To & Intro Videos</h4>
+			<ul id="intro-videos">
+				<li>
+					<h6>Visual Editor</h6>
+					<a href="//fast.wistia.net/embed/iframe/bj9wbt88v4?popover=true&volumeControl=false&playerColor=5953a0" class="wistia-popover[height=341,playerColor=5953a0,width=640]"><img src="https://embed-ssl.wistia.com/deliveries/b20b0c54edf2a38dcb653e0feebe454e2a164abe.jpg?image_play_button=true&image_play_button_color=7b796ae0&image_crop_resized=150x80" alt="" /></a>
+				</li>
+				<li>
+					<h6>In-Line Editing</h6>
+					<a href="//fast.wistia.net/embed/iframe/aou68khtga?popover=true&volumeControl=false&playerColor=5953a0" class="wistia-popover[height=341,playerColor=5953a0,width=640]"><img src="https://embed-ssl.wistia.com/deliveries/d98ba61ddad3c74e4aa2070357388f0e6328ad4f.jpg?image_play_button=true&image_play_button_color=7b796ae0&image_crop_resized=150x80" alt="" /></a>
+				</li>
+			</ul>
+			<!--JS for wistia popover embeds-->
+			<script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/popover-v1.js"></script>
+			
+			<!--<a href="//fast.wistia.net/embed/iframe/bj9wbt88v4?popover=true" class="wistia-popover[height=341,playerColor=7b796a,width=640]"><i class="fa fa-youtube-play"></i> &nbsp;Visual Editor Introduction</a>-->
+			
+			<!--<button style="display:none;" id="save-settings-button" class="purple extra-padding" data-bind="visible: !syncingDataWithServer(), click: saveSettings, enable: settings.dirty(), css: { disabled: !settings.dirty() || savingSettings() }">
 				<span data-bind="visible: !savingSettings()">Save Settings</span>
 				<span data-bind="visible: savingSettings()"><i class="fa fa-spin fa-spinner"></i> &nbsp;Saving...</span>
-			</button>
+			</button>-->
 			
 			<div style="float:left;margin-top:100px;position:relative;width:100%;" class="option-element" data-bind="with: $root">
 				<span style="display:none;cursor:pointer;font-size:12px;border-bottom:1px dotted #AAA;color:#AAA;" data-bind="visible: !deletingPlugin(), click: function(){ deletingPlugin(true); }">Delete all plugin settings & data</span>
@@ -52,8 +68,10 @@
 		
 		<div class="gb-sidebar-content">
 			<h5>Any Questions?</h5>
-			<p>Open a ticket on <a href="http://gravitybuttons.com/support" target="_blank">gravitybuttons.com</a>. We’re always happy to help you get set up and answer any questions you might have.</p>
-			<a href="http://gravitybuttons.com/support" target="_blank"><button class="dark tiny extra-padding">Open a ticket</button></a>
+			<p>Open a ticket on <a href="https://gravitybuttons.com/support" target="_blank">gravitybuttons.com</a>. We’re always happy to help you get set up and answer any questions you might have.</p>
+			<a href="https://gravitybuttons.com/support" target="_blank"><button class="dark tiny extra-padding">Open a ticket</button></a>
+			
+			<a href="https://gravitybuttons.com/pricing" target="_blank"><div class="gb-sidebar-ad ad1"></div></a>
 		</div><!--/.gb-sidebar-content-->
 		
 	</div>

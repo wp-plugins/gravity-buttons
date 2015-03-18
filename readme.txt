@@ -1,10 +1,10 @@
-=== Gravity Buttons  ===
+=== Gravity Buttons ===
 Contributors: philbaylog
 Tags: button generator, button creator, button maker, css button, css3 button, css3 button generator, button with icon, rounded button, button shortcode, gradient button, conversion button, call to action button
 Requires at least: 3.9
-Donate Link: http://gravitybuttons.com/pricing
+Donate Link: https://gravitybuttons.com/pricing
 Tested up to: 4.1.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2
 
 Gravity Buttons is a button creator for WordPress that allows anyone to create beautiful buttons anywhere on their site.
@@ -20,12 +20,12 @@ Gravity Buttons are completely responsive and designed to look great on mobile, 
 
 Gravity Buttons features that enable you to create buttons and convert visitors as easily and efficiently as possible:
 
-* One-Minute Install: Install and create your first button in under 60 seconds
+* One-Minute Install: Install and create your first bar in under 60 seconds
 * Beautiful Button Presets: Choose from professionally designed button presets, or create your own!
 * Visual Editor: Design your own buttons with an easy-to-use visual editor
 * In-Line Editing: Update button text in-line without having to open any menus
 * Awesome Icon Selection: Add over 500 distinctive icons to your calls to action
-* Mobile Friendly: Responsive from the ground up so your buttons look great on your phone and browser
+* Mobile Friendly: Responsive from the ground up so your bars look great on your phone and browser
 * Alignment Support: Left Align, Center, or Right Align your buttons with one click
 
 
@@ -38,18 +38,17 @@ This section describes how to install the plugin and create your first button.
 3. Create a new Post or Page (or edit an existing one) and click the Gravity Button button in the post editor (it will be a purple button next to all the others)
 4. Select your button style, text, and specify where users should go when they click your button
 5. Click "Insert" to insert the button into your post. Self-Five for creating a beautiful button in seconds.
-6. Edit any existing button by double clicking it, or editing the text in-line
 
 
 == Frequently Asked Questions ==
 
 ###X Feature is not working. What should I do?
 
-Open a ticket [here](http://gravitybuttons.com/support). Describe what isn’t working, what should be happening, and provide the name of the theme you are using.
+Open a ticket [here](https://gravitybuttons.com/support). Describe what isn’t working, what should be happening, and provide the name of the theme you are using.
 
 ###When I deactivate or uninstall the plugin, will my buttons still work?
 
-Yes...well...sorta. The will be completely functional, but they probably won't look too pretty. If you deactivate gravitybuttons but want to keep all your buttons, you can add this code to your theme's css file to cause every gravity button to look like a normal link on your site: `.gb-button{ background-color:transparent !important; }`.
+Yes...well...sorta. The will be completely functional, but they probably won't look too pretty. If you deactivate gravitybuttons but want to keep all your buttons, you can add this code to your theme's css file to cause every gravity button to appear like a normal link on your site: `.gb-button{ background-color:transparent !important; }`.
 
 ###When I deactivate or uninstall the plugin, is all my data deleted?
 
@@ -77,6 +76,15 @@ Aside from both plugins having kickass names, nah no relation.
 
 == Changelog ==
 
+= 1.0.1 | Mar 18, 2015 =
+* Feature: Added intro videos to settings page
+* Tweak: Improved UX with regards to closing color picker causing involuntary actions 
+* Tweak: Improved logic for placing icon in text when selected
+* Fix: Fixed bug where sometimes clicking on overlay didn’t close modal
+* Fix: Fixed font smoothing issues so WYSIWYG is true from editor to screen
+* Tweak: Added link on plugins page so users can jump straight to settings & upgrade pages
+* Tweak: Added upgrade opportunities to main modal and settings page
+
 = 1.0.0 | Mar 3, 2015 =
 * Initial public release of Gravity Buttons
 
@@ -88,4 +96,4 @@ Please contact me if you wish to help with translation!
 
 == Feedback ==
 
-I always appreciate any feedback or ideas you might have for the plugin. Please open a ticket [here](http://gravitybuttons.com/support) and let me know what’s on your mind!
+I always appreciate any feedback or ideas you might have for the plugin. Please open a ticket [here](https://gravitybuttons.com/support) and let me know what’s on your mind!
