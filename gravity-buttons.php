@@ -3,7 +3,7 @@
 Plugin Name: Gravity Buttons
 Plugin URI: https://gravitybuttons.com
 Description: Gravity Buttons is a button creator for WordPress that allows anyone to create beautiful buttons anywhere on their site.
-Version: 1.0.1
+Version: 1.0.2
 Author: Phil Baylog
 Author URI: https://gravitybuttons.com
 License: GPLv2
@@ -16,7 +16,7 @@ define( 'GB_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'GB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 global $GB_VERSION;
-$GB_VERSION = '1.0.1';
+$GB_VERSION = '1.0.2';
 
 class GravityButtons{
 

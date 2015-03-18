@@ -76,6 +76,9 @@ Aside from both plugins having kickass names, nah no relation.
 
 == Changelog ==
 
+= 1.0.2 | Mar 18, 2015 =
+* Fix: Fixed font loading issue on https connections
+
 = 1.0.1 | Mar 18, 2015 =
 * Feature: Added intro videos to settings page
 * Tweak: Improved UX with regards to closing color picker causing involuntary actions 
